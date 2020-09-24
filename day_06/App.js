@@ -4,9 +4,14 @@ class App extends React.Component{
     }
 
     handleInputChange(e){
+        console.log("Zawartość w evencie: " + e.target.value)
+        console.log("Zawartość przed setState: " + this.state.text)
+
+        //metoda asynchroniczna, wykonywana w trakcie render - w chwili renderowania strony, a nie tutaj!
        this.setState({
            text:e.target.value
        })
+       console.log("Zawartość po setState: " + this.state.text)
     }
 
     handleButtonClick =  () => {
@@ -17,6 +22,7 @@ class App extends React.Component{
     }
 
     render(){
+        console.log("Zawartość w trakcie render: " + this.state.text)
         return(
             <>
                 <input value={this.state.text} placeholder="Wpisz..." onChange={this.handleInputChange.bind(this)} type="text" />
