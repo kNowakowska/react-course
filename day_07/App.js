@@ -8,9 +8,15 @@ class Message extends React.Component{
     }
 
     handleMessageButton (){
-        this.setState({
-            isMessageActive: !this.state.isMessageActive
-        })
+        // debugger - zatrzymuje program aby zlokalizować błąd
+        // this.setState({
+        //     isMessageActive: !this.state.isMessageActive
+        // })
+
+        //jeśli zwracamy obiekt z funkcji strzałkowej to można wziac kod w ()
+        this.setState( (prevState) => ({
+            isMessageActive: !prevState.isMessageActive
+        }))
     }
     render(){
         console.log(this.state.isMessageActive)
@@ -25,7 +31,7 @@ class Message extends React.Component{
             {/* drugie rozwiazanie
              */}
             {/* {this.state.isMessageActive ? <p>{text}</p> : null} */}
-            
+
             {/* trzecie rozwiazanie */}
             {this.state.isMessageActive && <p>{text}</p>}
             </>
