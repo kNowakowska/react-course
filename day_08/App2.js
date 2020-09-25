@@ -5,8 +5,10 @@ class Counter extends React.Component{
         result: this.props.result
     }
 
-    handleMathClick(type = "reset", number = 1 ){
-        if(type === "substraction"){
+    //wniosek: lepiej używać funkcji strzałkowej bo można uniknąć bindowania
+    handleMathClick=(type = "reset", number = 1 )=>{
+        // debugger
+        if(type === "subtraction"){
             this.setState(prevState => ({
                 count: prevState.count+1,
                 result: prevState.result - number
@@ -26,10 +28,35 @@ class Counter extends React.Component{
     render(){
         return(
             <>
-            {/* Do binda możemy przekazać argumenty które chcemy przekazac do funkcji. */}
-            <button onClick = {this.handleMathClick.bind(this, "substraction", 1)}>-1</button>
-            <button onClick = {() => this.handleMathClick()}>RESET</button>
-            <button onClick = {() => this.handleMathClick("addition")}>+1</button>
+           <MathButton 
+            name="-10" 
+            number={10} 
+            type="subtraction" 
+            click={this.handleMathClick} 
+           />
+           <MathButton 
+            name="-1" 
+            number={1} 
+            type="subtraction" 
+            click={this.handleMathClick} 
+           />
+           <MathButton 
+            name="reset" 
+            type="reset" 
+            click={this.handleMathClick} 
+           />
+           <MathButton 
+            name="+1" 
+            number={1} 
+            type="addition" 
+            click={this.handleMathClick} 
+           />
+           <MathButton 
+            name="+10" 
+            number={10} 
+            type="addition" 
+            click={this.handleMathClick} 
+           />
             <h1>Liczba kliknięć: {this.state.count}</h1>
             <h1>Wynik: {this.state.result}</h1>
             </>
@@ -37,5 +64,11 @@ class Counter extends React.Component{
     }
 }
 
+const MathButton = (props) =>{
+    return (
+        <button onClick={() => props.click(props.type, props.number)}>{props.name}</button>
+    )
+    
+}
 //uwaga aby w propsie nie podać "0" jako string
 ReactDOM.render(<Counter result={0}/>, document.getElementById('root'))
