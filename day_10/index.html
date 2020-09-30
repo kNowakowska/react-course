@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day 10 - mini projekt - koszyk</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        div{
+            line-height: 50px;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button{
+            background-color: white;
+            border: 2px solid black;
+            font-weight: bold;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            outline:none;
+        }
+        button:disabled{
+            opacity: 0.3;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+        <!-- Kontener na aplikację react -->
+    </div>
+
+
+    <!-- Dodanie reacta do aplikacji -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" src="App.js"></script>
+
+  </body>
+</html>
