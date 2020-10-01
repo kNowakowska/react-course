@@ -1,3 +1,9 @@
+const Item = (props) => {
+    return(
+        <li>{`owoc ${props.item}`}</li>
+    )
+}
+
 class ListItems extends React.Component{
 
     state = {
@@ -5,10 +11,11 @@ class ListItems extends React.Component{
     }
 
     render(){
+        const Items = this.state.items.map((item) => <Item item={item} key={item}/>)
         return(
             <ul>
                 {/* Użycie template stringa */}
-                {this.state.items.map((item) => <li key={item}>{`owoc ${item}`}</li>)}
+                {Items}
             </ul>
         )
     }
