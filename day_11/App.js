@@ -41,17 +41,44 @@ const Item = ({user}) => {
 class ListItems extends React.Component{
 
     state = {
-        items: ["jabłko", "sliwka", "gruszka"]
+        select: "all"
     }
 
-    render(){
+    handleUsersFilter(option){
+        this.setState({
+            select: option
+        })
+    }
+    usersList = () => {
+
         let users = this.props.data.users;
-        users = users.filter(user=>user.sex==="female")
-        const Items = users.map((user) => <Item user={user} key={user.id}/>)
+        //Moje rozwiązanie:
+        if(this.state.select==="all"){
+            return users.map(user => <Item user={user} key={user.id}/>)
+        }else{
+            return users.filter(user => user.sex===this.state.select).map(user => <Item user={user} key={user.id}/>)
+        }
+        //Rozwiązanie w kursie:
+        // switch(this.state.select){
+        //     case "all":
+        //         return users.map(user => <Item user={user} key={user.id}/>)
+        //     case "female":
+        //         return users.filter(user => user.sex==="female").map(user => <Item user={user} key={user.id}/>)
+        //     case "male":
+        //         return users.filter(user => user.sex==="male").map(user => <Item user={user} key={user.id}/>)
+        //     default:
+        //         return "coś sie zepsuło"
+        // }
+    }
+    render(){
+        
         return(
-            <ul>
-                {Items}
-            </ul>
+            <div>
+               <button onClick={this.handleUsersFilter.bind(this,"all")}>Wszyscy</button>
+               <button onClick={this.handleUsersFilter.bind(this, "female")}>Kobiety</button>
+               <button onClick={this.handleUsersFilter.bind(this, "male")}>Mężczyźni</button>
+               {this.usersList()}
+            </div>
         )
     }
 }
