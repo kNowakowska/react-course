@@ -7,16 +7,16 @@
 
 class App extends React.Component{
     state = {
-        items =[
+        items: [
             {
                 id: 1,
                 name: "herbata",
-                active: true
+                active: false
             },
             {
                 id:2,
                 name:"ziemniaki",
-                active: true
+                active: false
             },
             {
                 id:3,
@@ -26,12 +26,12 @@ class App extends React.Component{
             {
                 id:4,
                 name:"zupa wodna",
-                active: true
+                active: false
             },
             {
                 id:5,
                 name:"wrzątek",
-                active: true
+                active: false
             },
             {
                 id:6,
@@ -46,7 +46,10 @@ class App extends React.Component{
 
     render(){
         return(
-
+            <>
+                <Header items={this.state.items}/>
+                <ListItems/>
+            </>
         )
     }
 }
