@@ -40,7 +40,17 @@ class App extends React.Component{
             }
         ]
     }
-    activityChange= ()=>{
+    handleChangeStatus= (id)=>{
+        const items = this.state.items.map(item => {
+            if(id===item.id){
+                item.active = !item.active;
+            }
+            return item
+        })
+        this.setState({
+            // items: items to to samo co:
+            items
+        })
         
     }
 
@@ -48,7 +58,7 @@ class App extends React.Component{
         return(
             <>
                 <Header items={this.state.items}/>
-                <ListItems items={this.state.items}/>
+                <ListItems items={this.state.items} changeStatus={this.handleChangeStatus}/>
             </>
         )
     }

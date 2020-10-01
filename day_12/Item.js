@@ -1,5 +1,6 @@
 const Item = (props) => {
     return(
-        <li style={props.active ? {fontWeight: 'bold'} : {color: 'gray'}}>{props.name}</li>
+        <li  style={props.active ? {fontWeight: 'bold'} : {color: 'gray'}} onClick={() => props.changeStatus(props.id)}>{props.name}</li>
     )
+    // className={props.active ? "enabled" :"disabled" } i dodanie odpowiednich klas w style.css
 }
