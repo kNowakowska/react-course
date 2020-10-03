@@ -11,36 +11,30 @@ class Form extends React.Component{
         isLoved: true,
         number: "0"
     }
-    handleCityChange= (e) => {
-        this.setState({
-            city: e.target.value
-        })
-    }
-    handleTextChange = (e)=>{
-        this.setState({
-            text: e.target.value
-        })
-    }
-    handleIsLovedChange = (e)=>{
-        this.setState({
-            isLoved: e.target.checked
-        })
-    }
-    handleSelectChange= (e)=>{
-        this.setState({
-            number: e.target.value
-        })
+    handleChange = e => {
+        if(e.target.type === "checkbox"){
+            this.setState({
+                [e.target.name] : e.target.checked
+                
+            })
+        }else{
+            this.setState({
+                [e.target.name] : e.target.value
+                
+            })
+        }
+        
     }
     render() {
         return(
            <div>
-               <label >Podaj miasto: <input value={this.state.city} onChange={this.handleCityChange}type="text"/></label>
+               <label >Podaj miasto: <input value={this.state.city} onChange={this.handleChange} name="city" type="text"/></label>
                <br/>
-               <label >Napisz coś o tym mieście: <textarea value={this.state.text} onChange={this.handleTextChange}></textarea></label>
+               <label >Napisz coś o tym mieście: <textarea value={this.state.text} onChange={this.handleChange} name="text"></textarea></label>
                <br/>
-               <label >Czy lubisz to miasto? <input type="checkbox" checked={this.state.isLoved} onChange={this.handleIsLovedChange}/></label>
+               <label >Czy lubisz to miasto? <input type="checkbox" checked={this.state.isLoved} onChange={this.handleChange} name="isLoved"/></label>
                <br/>
-               <label > Ile razy byłeś w tym mieście? <select value={this.state.number} onChange={this.handleSelectChange}>
+               <label > Ile razy byłeś w tym mieście? <select value={this.state.number} onChange={this.handleChange} name="number">
                    <option value="0">0</option>
                    <option value="1">1</option>
                    <option value="2">2</option>
