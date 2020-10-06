@@ -44,11 +44,17 @@ class App extends React.Component{
 
     handleAddPrediction= e=>{
         e.preventDefault();
-        let newPred = {name:this.state.newPrediction, id: this.predictions.length+1}
-        this.predictions.push(newPred)
-        this.setState({
-            newPrediction: ""
-        })
+        if(this.state.newPrediction){
+            let newPred = {name:this.state.newPrediction, id: this.predictions.length+1}
+            this.predictions.push(newPred)
+            this.setState({
+                newPrediction: ""
+            })
+            alert(`Wróżba dodana! Aktualne opcje: ${this.predictions.map(item => item.name )}`)
+        }else{
+            alert("There's no prediction into field!")
+        }
+        
        
     }
     handleNewPrediction = e => {
