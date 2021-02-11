@@ -1,0 +1,25 @@
+div{
+    color: gray;
+    font-size: 14px;
+    margin: 10px 0;
+}
+h4{
+    color: black;
+    display: inline;
+    margin: 20px 10px;
+    font-size: 16px;
+    
+}
+button{
+    padding: 2px
+}
+button:nth-of-type(1){
+    margin-left: 15px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+h4.important{
+    color: red;
+}
