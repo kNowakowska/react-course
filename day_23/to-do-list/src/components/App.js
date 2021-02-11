@@ -61,7 +61,7 @@ class App extends Component {
     ]
   }
   counter = this.state.tasks.length;
-  doneCounter=6;
+  doneCounter=0;
 
   doTask =(id)=>{ 
     let taskTable = [...this.state.tasks];

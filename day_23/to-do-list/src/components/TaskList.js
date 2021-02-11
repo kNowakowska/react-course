@@ -2,8 +2,33 @@ import Task from "./Task";
 import "./TaskList.css";
 //komponent z lista zadan 
 const TaskList = (props) => {
-    const activeTasks = props.tasks.filter(task=> !task.done).map(task=><Task key={task.id} task={task} do={props.doTask} delete={props.deleteTask}/>)
-    const doneTasks = props.tasks.filter(task=> task.done).map(task=><Task key={task.id} task={task} do={props.doTask} delete={props.deleteTask}/>)
+    const active = props.tasks.filter(task=> !task.done);
+    if(active.length>=2){
+        active.sort((a,b)=>{
+        a=a.name.toLowerCase();
+        b=b.name.toLowerCase();
+       return  a.localeCompare(b);
+        })
+    }
+    
+    const activeTasks=active.map(task=><Task key={task.id} task={task} do={props.doTask} delete={props.deleteTask}/>)
+    const done = props.tasks.filter(task=> task.done);
+    if(done.length>=2){
+        done.sort((a,b)=>{return b.finishDate - a.finishDate});
+    }
+    
+    /*
+        done.sort((a,b)=>{
+            if(a.finishDate > b.finishDate){
+                return 1;
+            }
+            if(a.finishDate < b.finishDate){
+                return -1;
+            }
+            return 0;
+        })
+    */
+    const doneTasks = done.map(task=><Task key={task.id} task={task} do={props.doTask} delete={props.deleteTask}/>)
 
     return ( 
             <div>
