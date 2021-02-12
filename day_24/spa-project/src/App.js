@@ -1,6 +1,6 @@
 
 import './App.css';
-import {BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 
 const Home = ()=><h1>Strona startowa</h1>
 const News = ()=><h1>Aktualnosci</h1>
@@ -32,6 +32,7 @@ function App() {
     </header>
     <section>
       <Switch>
+        {/* wybiera tylko jeden komponent, nie są sprawdzane wszystkie ścieżki */}
         <Route path="/" exact component={Home}/>
         <Route path="/contact" component={Contact}/>
         <Route path="/news" component={News}/>
