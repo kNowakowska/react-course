@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Header from './Header';
 import Navigation from './Navigation';
 import Page from './Page';
