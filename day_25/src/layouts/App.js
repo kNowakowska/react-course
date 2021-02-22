@@ -1,10 +1,20 @@
 import '../styles/App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Header from './Header';
+import Navigation from './Navigation';
+import Page from './Page';
+import Footer from './Footer';
+
 function App() {
   return (
     <Router>
-      <div>
-      spa
+      <div className="app">
+      <header>{<Header/>}</header>
+      <main>
+        <aside>{<Navigation/>}</aside>
+        <section className="page">{<Page/>}</section>
+      </main>
+      <footer>{<Footer/>}</footer>
       </div>
     </Router>
     
